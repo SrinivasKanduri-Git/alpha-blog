@@ -1,0 +1,21 @@
+<h1><strong><u>Articles</u></strong></h1>
+<table>
+  <thead>
+    <tr>
+      <td><b><u>Id</u></b></td>
+      <td><strong><u>Title</u></strong></td>
+      <td><strong><u>Description</u></strong></td>
+      <td><strong><u>Action</u></strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @article.each do |a| %>
+    <tr>
+      <td><%=a.id%></td>
+      <td><%=a.title%></td>
+      <td><%=a.description%></td>
+      <td>N/A</td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
