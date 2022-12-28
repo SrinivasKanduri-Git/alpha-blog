@@ -5,7 +5,7 @@
       <td><b><u>Id</u></b></td>
       <td><strong><u>Title</u></strong></td>
       <td><strong><u>Description</u></strong></td>
-      <td><strong><u>Action</u></strong></td>
+      <td colspan="3"><strong><u>Action</u></strong></td>
     </tr>
   </thead>
   <tbody>
@@ -14,8 +14,15 @@
       <td><%=a.id%></td>
       <td><%=a.title%></td>
       <td><%=a.description%></td>
-      <td>N/A</td>
+      <td><button type="button"><%= link_to 'show', article_path(a)%></button></td>
+      <td><button type="button"><%= link_to 'edit', edit_article_path(a)%></button></td>
+      <td><button type="button"><%= link_to 'delete', article_path(a), data: { turbo_confirm: "Are you sure?", turbo_method: :delete }%></button></td>
     </tr>
     <%end%>
   </tbody>
 </table>
+
+<p>
+  <button type="button"><%= link_to 'Create article', new_article_path%></button> |
+  <button type="button"><%= link_to 'Back to home', root_path%></button>
+</p>

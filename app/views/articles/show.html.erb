@@ -1,3 +1,12 @@
 <h1><strong>Showing articles:</strong></h1>
 <p><strong>Title:</strong><%= @article.title %></p>
 <p><strong>description:</strong><%= @article.description %></p>
+
+<p>
+  <button type="button"><%= link_to 'edit', edit_article_path(@article)%></button> |
+  <button type="button"><%= link_to 'delete', article_path(@article), data: { turbo_confirm: "Are you sure?", turbo_method: :delete }%></button>
+</p>
+
+<p>
+  <button type="button"><%= link_to 'Back to articles', articles_path%></button> 
+</p>
