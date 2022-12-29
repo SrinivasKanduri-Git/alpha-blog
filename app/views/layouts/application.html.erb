@@ -11,9 +11,7 @@
   </head>
 
   <body>
-    <%flash.each do |key, msg|%>
-    <p style= "color: green"><%=msg%></p>
-    <%end%>
+    <%= render 'layouts/msg', status: :unprocessable_entity%>
     <%= yield %>
   </body>
 </html>

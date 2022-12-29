@@ -2,7 +2,6 @@
 <table>
   <thead>
     <tr>
-      <td><b><u>Id</u></b></td>
       <td><strong><u>Title</u></strong></td>
       <td><strong><u>Description</u></strong></td>
       <td colspan="3"><strong><u>Action</u></strong></td>
@@ -11,7 +10,6 @@
   <tbody>
     <% @articles.each do |a| %>
     <tr>
-      <td><%=a.id%></td>
       <td><%=a.title%></td>
       <td><%=a.description%></td>
       <td><button type="button"><%= link_to 'show', article_path(a)%></button></td>
