@@ -4,7 +4,7 @@
     <tr>
       <td><strong><u>Title</u></strong></td>
       <td><strong><u>Description</u></strong></td>
-      <td colspan="3"><strong><u>Action</u></strong></td>
+      <div class="col-3"><td><strong><u>Action</u></strong></td></div>
     </tr>
   </thead>
   <tbody>
@@ -12,9 +12,9 @@
     <tr>
       <td><%=a.title%></td>
       <td><%=a.description%></td>
-      <td><button type="button"><%= link_to 'show', article_path(a)%></button></td>
-      <td><button type="button"><%= link_to 'edit', edit_article_path(a)%></button></td>
-      <td><button type="button"><%= link_to 'delete', article_path(a), data: { turbo_confirm: "Are you sure?", turbo_method: :delete }%></button></td>
+      <td><%= link_to 'show', article_path(a)%></td>
+      <td><%= link_to 'edit', edit_article_path(a)%></td>
+      <td><%= link_to 'delete', article_path(a), data: { turbo_method: :delete, turbo_confirm: "Alert!: You are deleting article: #{a.title}, please confirm"}%></td>
     </tr>
     <%end%>
   </tbody>

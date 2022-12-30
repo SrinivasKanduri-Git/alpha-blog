@@ -13,7 +13,6 @@ before_action :set_article, only: %i[show edit update destroy]
   end
 
   def edit
-
   end
 
   def create
@@ -38,7 +37,7 @@ before_action :set_article, only: %i[show edit update destroy]
   def destroy
       @article.destroy
       flash[:notice] = "The article was deleted."
-      redirect_to article_path
+      redirect_to articles_path
   end
 
   private
