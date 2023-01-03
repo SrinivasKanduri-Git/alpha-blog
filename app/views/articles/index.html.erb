@@ -25,30 +25,4 @@
       </div>
     </div>
   <%end%>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td scope="col"><strong>Title</strong></td>
-          <td scope="col"><strong>Description</strong></td>
-          <td scope="col", colspan="3"><strong>Action</strong></td>
-        </tr>
-      </thead>
-      <tbody class="mt-2">
-        <% @articles.each do |a| %>
-        <tr>
-          <td><%=a.title%></td>
-          <td><%=a.description%></td>
-          <td><%= link_to 'show', article_path(a), class:"btn btn-outline-primary"%></td>
-          <td><%= link_to 'edit', edit_article_path(a), class:"btn btn-outline-warning"%></td>
-          <td><%= link_to 'delete', article_path(a), class:"btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Alert!: You are deleting article: #{a.title}, please confirm"}%></td>
-        </tr>
-        <%end%>
-      </tbody>
-    </table>
-  </div>
-
-  <p class="text-center">
-    <%= link_to 'Create article', new_article_path, class: "btn btn-outline-success"%>
-    <%= link_to 'Back to home', root_path, class: "btn btn-outine-danger"%>
-  </p>
 </div>
