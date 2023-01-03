@@ -1,11 +1,5 @@
 class User < ApplicationRecord
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-=======
   has_many :articles
->>>>>>> adding_users
   validates :username,
    presence: true, uniqueness: { case_sensitive: false },
    length: { minimum: 8, maximum: 25 }
@@ -13,10 +7,5 @@ class User < ApplicationRecord
   validates :email,
    presence: true, uniqueness: { case_sensitive: false },
    length: { maximum: 105 },
-<<<<<<< HEAD
-   format: {with: VALID_EMAIL_REGEX} 
->>>>>>> adding_users
-=======
    format: {with: VALID_EMAIL_REGEX}
->>>>>>> adding_users
 end
