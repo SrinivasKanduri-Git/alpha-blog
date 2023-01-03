@@ -18,8 +18,8 @@
             <%= link_to 'delete', article_path(a), class:"btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Alert!: You are deleting article: #{a.title}, please confirm"}%>
           </div>
           <div class="card-footer text-muted">
-            created at <%=time_ago_in_words(a.created_at)%> ago,
-            updated at <%=time_ago_in_words(a.updated_at)%> ago.
+            created <%=time_ago_in_words(a.created_at)%> ago,
+            updated <%=time_ago_in_words(a.updated_at)%> ago.
           </div>
         </div>
       </div>
