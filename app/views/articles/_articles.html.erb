@@ -4,7 +4,9 @@
       <div class="col-6 mt-4">
         <div class="card text-center shadow mb-5 bg-white rounded">
           <div class="card-header font-italic">
-            By <%= a.user.username%>
+            <%if a.user%>
+            By <%= link_to a.user.username, user_path(a.user)%>
+            <%end%>
           </div>
           <div class="card-body">
             <h5 class="card-title"><%=a.title%></h5>
@@ -14,8 +16,8 @@
             <%= link_to 'delete', article_path(a), class:"btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Alert!: You are deleting article: #{a.title}, please confirm"}%>
           </div>
           <div class="card-footer text-muted">
-            created <%=time_ago_in_words(a.created_at)%> ago,
-            updated <%=time_ago_in_words(a.updated_at)%> ago.
+            <small>created <%=time_ago_in_words(a.created_at)%> ago,
+            updated <%=time_ago_in_words(a.updated_at)%> ago.</small>
           </div>
         </div>
       </div>
