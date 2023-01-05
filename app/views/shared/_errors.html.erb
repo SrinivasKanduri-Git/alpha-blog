@@ -1,13 +1,14 @@
 <% if obj.errors.any? %>
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <h4 class="alert-heading">The following errors prevented the <%= obj.class.name.downcase %> from being saved</h4>
-    <ul>
+    <h4 class="alert-heading">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    The following errors prevented the <%= obj.class.name.downcase %> from being saved
+    </h4>
       <% obj.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li><%=msg%></li>
       <% end %>
-    </ul>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true"></span>
     </button>
   </div>
 <% end %>

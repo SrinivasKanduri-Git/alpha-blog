@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
+  before_action :require_user, except: %i[show index]
+  before_action :require_same_user, except: %i[show index]
 
   def show
     @articles = @user.articles.paginate(page: params[:page], per_page: 3)
@@ -43,5 +45,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    unless current_user == @user
+      flash[:alert] = "Unauthorized action!!"
+      redirect_to users_path
+    end
   end
 end
