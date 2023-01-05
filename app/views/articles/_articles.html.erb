@@ -12,8 +12,10 @@
             <h5 class="card-title"><%=a.title%></h5>
             <p class="card-text"><%=truncate(a.description, length: 50)%></p>
             <%= link_to 'view', article_path(a), class:"btn btn-outline-primary"%>
-            <%= link_to 'edit', edit_article_path(a), class:"btn btn-outline-warning"%>
-            <%= link_to 'delete', article_path(a), class:"btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Alert!: You are deleting article: #{a.title}, please confirm"}%>
+            <% if logged_in? && a.user == current_user %>
+              <%= link_to 'edit', edit_article_path(a), class:"btn btn-outline-warning"%>
+              <%= link_to 'delete', article_path(a), class:"btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Alert!: You are deleting article: #{a.title}, please confirm"}%>
+            <% end %>  
           </div>
           <div class="card-footer text-muted">
             <small>created <%=time_ago_in_words(a.created_at)%> ago,

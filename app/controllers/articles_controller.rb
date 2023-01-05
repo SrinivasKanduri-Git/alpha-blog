@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 before_action :set_article, only: %i[show edit update destroy]
+before_action :require_user, except: %i[show index]
+before_action :require_same_user, except: %i[show index]
 
   def show
   end
@@ -49,5 +51,12 @@ before_action :set_article, only: %i[show edit update destroy]
 
   def article_params
     params.require(:article).permit(:title, :description)
+  end
+
+  def require_same_user
+    unless current_user == @article.user
+      flash[:alert] = "Unauthorized action!!"
+      redirect_to root_path
+    end
   end
 end
