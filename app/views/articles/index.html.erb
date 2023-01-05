@@ -1,2 +1,13 @@
-  <h1 class="text-center mt-4"><strong>Articles listing page</strong></h1>
-  <%=render 'articles'%>
+<h1 class="text-center mt-4"><strong>Articles listing page</strong></h1>
+<div class="container col-8">
+  <div class="apple_pagination">
+    <%= will_paginate @articles, :container => false %>
+  </div>
+</div>
+
+<%= render 'articles' %>
+<div class="container col-8">
+  <div class="apple_pagination mb-4">
+    <%= will_paginate @articles, :container => false %>
+  </div>
+</div>
