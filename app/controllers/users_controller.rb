@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
-  before_action :require_user, except: %i[show index]
+  before_action :set_user, only: %i[show edit update destroy]
+  before_action :require_user, only: %i[edit update destroy]
   before_action :require_same_user, except: %i[show index]
 
   def show
@@ -36,6 +36,13 @@ class UsersController < ApplicationController
     else
       render 'edit', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    flash[:notice] = "The user and all associated articles have been deleted"
+    redirect_to signup_path
   end
   private
 
