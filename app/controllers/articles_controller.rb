@@ -24,7 +24,7 @@ before_action :require_same_user, only: %i[edit update destroy]
       flash[:notice] = "Article was successfully created."
       redirect_to @article
     else
-      render 'new', status: :unprocessable_entity
+      render 'new', status: 422
     end
   end
 
@@ -33,7 +33,7 @@ before_action :require_same_user, only: %i[edit update destroy]
       flash[:notice] = "Article was edited successfully."
       redirect_to @article
     else
-      render 'edit', status: :unprocessable_entity
+      render 'edit', status: 422
     end
   end
 
