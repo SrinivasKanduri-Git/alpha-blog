@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserActionsMailer.new_signup_action(@user).deliver_now
       session[:user_id] = @user.id
       flash[:notice] = "Welcome to AlphaBlog #{@user.username}, your account created successfully."
       redirect_to @user
