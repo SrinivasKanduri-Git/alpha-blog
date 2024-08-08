@@ -56,6 +56,7 @@ class UsersController < ApplicationController
 
   def require_same_user
     unless current_user == @user
+      UserActionsMailer.unauthorized_action(@user).deliver_now
       flash[:alert] = "Unauthorized action!!"
       redirect_to users_path
     end

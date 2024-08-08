@@ -12,7 +12,7 @@
           <div class="card-text text-left">description: <%= simple_format(@article.description) %></div>
           <% if logged_in? && @article.user == current_user %>
             <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
-            <%= link_to "Delete", article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+            <%= link_to "Delete", article_path(@article), class: "btn btn-outline-danger", data: { turbo_method: :delete, turbo_confirm: "Alert!: You are deleting article: #{@article.title}, please confirm"} %>
           <% end %>
         </div>
         <div class="card-footer text-muted">

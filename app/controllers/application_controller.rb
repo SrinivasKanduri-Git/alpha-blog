@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   helper_method :current_user, :logged_in?
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -15,4 +17,9 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  private
+    def record_not_found
+      render file: Rails.root.join('public', '404.html'), status: 404, layout: false
+    end
 end

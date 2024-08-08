@@ -21,6 +21,7 @@ before_action :require_same_user, only: %i[edit update destroy]
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
+      ArticleMailer.new_article(@article).deliver_now
       flash[:notice] = "Article was successfully created."
       redirect_to @article
     else

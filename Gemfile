@@ -77,3 +77,5 @@ gem "cssbundling-rails", "~> 1.1"
 gem "jsbundling-rails", "~> 1.1"
 
 gem "bootstrap", "~> 5.3"
+
+gem "letter_opener", "~> 1.10"

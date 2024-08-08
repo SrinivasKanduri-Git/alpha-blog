@@ -1,0 +1,16 @@
+<h1>A new article was posted on your page.</h1>
+
+<h4>
+  Article details:
+</h4>
+
+<p>
+  <%@object.attributes.each do |attr_key, attr_val|%>
+    <li><%=attr_key%>: <%=attr_val%></li>
+  <%end%>
+</p>
+
+<h4>
+Regards <br>
+team AlphaBlog
+</h4>
