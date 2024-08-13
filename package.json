@@ -8,6 +8,10 @@
     "esbuild": "^0.16.12",
     "sass": "^1.57.1"
   },
+  "@hotwired/stimulus": {
+    "require": "external:@hotwired/stimulus",
+    "import": "external:@hotwired/stimulus"
+  },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
