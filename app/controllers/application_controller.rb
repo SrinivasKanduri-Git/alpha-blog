@@ -1,5 +1,6 @@
-class ApplicationController < ActionController::Base
+# frozen_string_literal: true
 
+class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   helper_method :current_user, :logged_in?
@@ -12,14 +13,15 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    unless logged_in?
-      flash[:alert] = "Unauthorized action!!"
-      redirect_to login_path
-    end
+    return if logged_in?
+
+    flash[:alert] = 'Unauthorized action!!'
+    redirect_to login_path
   end
 
   private
-    def record_not_found
-      render file: Rails.root.join('public', '404.html'), status: 404, layout: false
-    end
+
+  def record_not_found
+    render file: Rails.root.join('public', '404.html'), status: 404, layout: false
+  end
 end

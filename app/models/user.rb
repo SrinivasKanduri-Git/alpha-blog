@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   before_save { self.email = email.downcase }
   has_many :articles, dependent: :destroy
@@ -9,6 +11,8 @@ class User < ApplicationRecord
   validates :email,
             presence: true, uniqueness: { case_sensitive: false },
             length: { maximum: 105 },
-            format: {with: VALID_EMAIL_REGEX}
+            format: { with: VALID_EMAIL_REGEX }
   has_secure_password
+  paginates_per 3
+  mount_uploader :picture, PictureUploader
 end

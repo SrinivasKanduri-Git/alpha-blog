@@ -1,19 +1,27 @@
 <h1 class="text-center mt-5"><%="#{@user.username}'s profile"%></h1>
 
-<%= gravatar_for @user, size: 200%>
+<div class="text-center">
+  <%if @user.picture?%>
+    <%=image_tag @user.picture.url, size: 200%>
+  <%else%>
+    <%=image_tag "/blank_profile.JPG", size: 200%>
+  <%end%>
+</div>
 <div class="text-center mt-4">
   <% if logged_in? && @user == current_user %>
     <%= link_to 'edit profile', edit_user_path(@user), class:"btn btn-outline-success btn-lg"%>
   <% end %>
 </div>
 
-<h2 class="text-center mt-5"><b>Articles</b>
- <small><%= will_paginate @articles, :container => false %></small>
-</h2>
+<h2 class="text-center mt-5"><b>Articles</b></h2>
+<div class="container col-8">
+  <div class="apple_pagination">
+  <small><%= paginate @articles%></small></div>
+</div>
 
 <%=render 'articles/articles'%>
 <div class="container col-8">
   <div class="apple_pagination mb-4">
-    <%= will_paginate @articles, :container => false %>
+    <%= paginate @articles%>
   </div>
 </div>
