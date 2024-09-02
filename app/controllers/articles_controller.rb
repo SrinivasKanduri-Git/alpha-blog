@@ -19,7 +19,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @rticle.image = params[:file]
     @article.user = current_user
     if @article.save
       ArticleMailer.new_article(@article).deliver_now
